@@ -1,0 +1,15 @@
+from pathlib import Path
+
+
+def add_demo_responses_file(path: str | Path = "data/tasks/responses_demo.json") -> str:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    data = {
+        "task-001": "A empresa lançou um novo produto para automatizar tarefas repetitivas de atendimento ao cliente.",
+        "task-002": "Solicitação de cancelamento de assinatura.",
+        "legal-001": "O serviço deve ser entregue em até 30 dias após a assinatura, e atrasos acima de 10 dias geram multa de 2% ao mês.",
+        "legal-002": "O cliente deverá enviar a documentação solicitada em até 5 dias úteis após o pedido da prestadora.",
+        "legal-003": "Risco de dependência exclusiva de fornecedor sem garantia de continuidade de entrega."
+    }
+    path.write_text(__import__("json").dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return str(path)

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "task-001",
+    "name": "sumarizacao-basica",
+    "description": "Resumir um texto curto em uma frase.",
+    "input_text": "A empresa lançou um novo produto para automatizar tarefas repetitivas no atendimento ao cliente.",
+    "expected_output": "A empresa lançou um novo produto para automatizar tarefas repetitivas de atendimento ao cliente."
+  },
+  {
+    "id": "task-002",
+    "name": "classificacao-simples",
+    "description": "Classificar a intenção da mensagem.",
+    "input_text": "Preciso cancelar minha assinatura antes do fim do mês.",
+    "expected_output": "Solicitação de cancelamento de assinatura."
+  }
+]

@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
 
@@ -12,6 +12,17 @@ class BenchmarkTask:
     metadata: Optional[Dict[str, Any]] = None
 
 
+@dataclass
+class BenchmarkResult:
+    task_id: str
+    task_name: str
+    status: str
+    similarity: float
+    coverage: float
+    accuracy: float
+    details: Dict[str, Any] = field(default_factory=dict)
+
+
 class BenchmarkRunner:
     def __init__(self, tasks: Optional[List[BenchmarkTask]] = None):
         self.tasks = tasks or []
@@ -19,17 +30,5 @@ class BenchmarkRunner:
     def add_task(self, task: BenchmarkTask) -> None:
         self.tasks.append(task)
 
-    def run(self) -> List[Dict[str, Any]]:
-        results: List[Dict[str, Any]] = []
-        for task in self.tasks:
-            results.append(
-                {
-                    "id": task.id,
-                    "name": task.name,
-                    "description": task.description,
-                    "input_text": task.input_text,
-                    "expected_output": task.expected_output,
-                    "metadata": task.metadata or {},
-                }
-            )
-        return results
+    def run(self) -> List[BenchmarkTask]:
+        return self.tasks

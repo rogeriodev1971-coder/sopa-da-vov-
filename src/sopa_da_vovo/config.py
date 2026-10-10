@@ -4,13 +4,13 @@ from typing import Any, Dict, List, Optional
 
 @dataclass
 class ProjectConfig:
-    project_name: str = "sopa-da-vov-"
+    project_name: str = "sopa-da-vov"
     environment: str = "development"
     model_name: Optional[str] = None
     tasks_dir: str = "data/tasks"
     output_dir: str = "output"
     metrics: List[str] = field(
-        default_factory=lambda: ["accuracy", "coverage", "clarity", "grounding"]
+        default_factory=lambda: ["similarity", "coverage", "accuracy", "status"]
     )
 
     def to_dict(self) -> Dict[str, Any]:

@@ -7,10 +7,11 @@ from sopa_da_vovo.evaluator import evaluate_response
 
 ROOT = Path(__file__).resolve().parents[1]
 TASKS_FILE = ROOT / "data" / "tasks" / "sample_tasks.json"
+LEGAL_TASKS_FILE = ROOT / "data" / "tasks" / "legal_sample_tasks.json"
 
 
 def load_tasks(path: Path):
-    data = json.loads(path.read_text(encoding="utf-8"))
+    raw = json.loads(path.read_text(encoding="utf-8"))
     return [
         BenchmarkTask(
             id=item["id"],
@@ -19,13 +20,15 @@ def load_tasks(path: Path):
             input_text=item["input_text"],
             expected_output=item.get("expected_output"),
         )
-        for item in data
+        for item in raw
     ]
 
 
 if __name__ == "__main__":
-    tasks = load_tasks(TASKS_FILE)
+    tasks = load_tasks(TASKS_FILE) + load_tasks(LEGAL_TASKS_FILE)
     runner = BenchmarkRunner(tasks)
+
+    print("Executando benchmark de exemplo...\n")
 
     for task in runner.tasks:
         candidate_response = task.expected_output or task.input_text
@@ -35,4 +38,4 @@ if __name__ == "__main__":
         print(f"  Cobertura: {result['coverage']:.2f}")
         print(f"  Precisao: {result['accuracy']:.2f}")
         print(f"  Status: {result['status']}")
-        print("-" * 40)
+        print("-" * 50)

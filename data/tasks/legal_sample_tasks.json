@@ -1,0 +1,23 @@
+[
+  {
+    "id": "legal-001",
+    "name": "resumo-contrato",
+    "description": "Resumir uma cláusula contratual em linguagem clara.",
+    "input_text": "A empresa prestadora deve entregar o serviço em até 30 dias após a assinatura do contrato. Qualquer atraso superior a 10 dias será penalizado em 2% ao mês.",
+    "expected_output": "O serviço deve ser entregue em até 30 dias após a assinatura. Atrasos superiores a 10 dias geram multa de 2% ao mês."
+  },
+  {
+    "id": "legal-002",
+    "name": "extracao-obrigacao",
+    "description": "Extrair a obrigação principal de uma cláusula.",
+    "input_text": "O cliente deverá enviar a documentação solicitada em até 5 dias úteis após o pedido da prestadora.",
+    "expected_output": "O cliente deverá enviar a documentação solicitada em até 5 dias úteis após o pedido da prestadora."
+  },
+  {
+    "id": "legal-003",
+    "name": "analisador-risco",
+    "description": "Identificar o principal risco operacional da situação descrita.",
+    "input_text": "A empresa depende de um único fornecedor para o envio dos materiais críticos, sem cláusula de garantia de continuidade de entrega.",
+    "expected_output": "Risco de dependência exclusiva de fornecedor sem garantia de continuidade de entrega."
+  }
+]

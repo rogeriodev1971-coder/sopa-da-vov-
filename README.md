@@ -1,14 +1,14 @@
 # Sopa da Vovó
 
-Projeto mínimo e funcional para benchmark e avaliação de agentes de IA.
+Projeto base para avaliação de agentes de IA com foco em benchmark, métricas e tarefas de exemplo.
 
 ## Objetivo
 
-Criar uma base simples para experimentar:
-- tarefas de benchmark;
-- critérios de avaliação;
-- métricas de qualidade;
-- organização de experimentos em IA.
+Cria uma estrutura simples, reutilizável e fácil de evoluir para:
+- benchmark de respostas de IA;
+- avaliação de qualidade por tarefa;
+- comparação de saídas esperadas vs. geradas;
+- organização de experiências em IA e automação.
 
 ## Estrutura
 
@@ -19,15 +19,19 @@ sopa-da-vov-
 ├── requirements.txt
 ├── data/
 │   └── tasks/
-│       └── sample_tasks.json
+│       ├── sample_tasks.json
+│       └── legal_sample_tasks.json
 ├── examples/
 │   └── run_benchmark.py
-└── src/
-    └── sopa_da_vovo/
-        ├── __init__.py
-        ├── benchmark.py
-        ├── config.py
-        └── evaluator.py
+├── src/
+│   └── sopa_da_vovo/
+│       ├── __init__.py
+│       ├── benchmark.py
+│       ├── config.py
+│       ├── evaluator.py
+│       └── report.py
+└── tests/
+    └── test_evaluator.py
 ```
 
 ## Instalação
@@ -38,20 +42,32 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Uso rápido
+## Execução rápida
 
 ```bash
 python examples/run_benchmark.py
 ```
 
-## Exemplo de execução
+## O que a base mede
 
-O script cria tarefas de exemplo e calcula métricas de qualidade para uma resposta candidata, incluindo:
+O projeto calcula métricas simples para comparar a resposta gerada com a resposta esperada:
 - similaridade textual;
 - cobertura de tokens;
-- precisão de resposta;
-- status da tarefa.
+- precisão da resposta;
+- status final da tarefa (`pass` ou `review`).
+
+## Tarefas de exemplo
+
+O repositório já inclui tarefas básicas e tarefas com contexto jurídico/operacional para servir como ponto de partida.
+
+## Próximos passos recomendados
+
+- adicionar casos mais reais de uso jurídico;
+- criar avaliação por categoria;
+- exportar relatórios em JSON/CSV;
+- comparar diferentes modelos;
+- evoluir para benchmark automatizado.
 
 ## Status
 
-Base funcional e pronta para evoluir com novos casos, testes, métricas e integração com agentes de IA.
+Estrutura funcional, estável e pronta para evolução.
